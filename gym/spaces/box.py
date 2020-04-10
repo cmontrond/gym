@@ -1,3 +1,5 @@
+from builtins import min, tuple
+
 import numpy as np
 
 from .space import Space
@@ -22,6 +24,9 @@ class Box(Space):
 
     """
     def __init__(self, low, high, shape=None, dtype=np.float32):
+        # type casting low and high parameters (first two parameters of box) with float32
+        low = np.float32(low)
+        high = np.float32(high)
         assert dtype is not None, 'dtype must be explicitly provided. '
         self.dtype = np.dtype(dtype)
 
@@ -44,7 +49,7 @@ class Box(Space):
         low_precision = _get_precision(self.low.dtype)
         high_precision = _get_precision(self.high.dtype)
         dtype_precision = _get_precision(self.dtype)
-        if min(low_precision, high_precision) > dtype_precision:
+        if min(low_precision, high_precision)> dtype_precision:
             logger.warn("Box bound precision lowered by casting to {}".format(self.dtype))
         self.low = self.low.astype(self.dtype)
         self.high = self.high.astype(self.dtype)
