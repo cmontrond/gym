@@ -5,9 +5,12 @@ from gym import envs, make
 
 """ First issue #1844"""
 
-env = make('CartPole-v0')
-print(envs.registry.all())
-for i_episode in range(10):
+# env = make('CartPole-v0')
+env = make('DemonAttack-ram-v0') # works
+print(env)
+# env = gym.make('Defender-ram-v0') # doesn't work (it hangs)
+# print(env)
+"""for i_episode in range(10):
     observation = env.reset()
     for t in range(5):
         env.render()
@@ -21,4 +24,4 @@ for i_episode in range(10):
         if done:
             print("Episode finished after {} timesteps".format(t+1))
             break
-env.close()
+env.close()"""
