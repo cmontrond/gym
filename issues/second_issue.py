@@ -1,4 +1,5 @@
-# Issue 1770
+# Issue 1770 didn't want window to appear, needed only the coordinates. Issue was solved by adding params to the method
+# input.
 
 import gym
 
